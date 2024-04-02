@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuwanie filmu {{film.tytul}}</title>
+</head>
+<body>
+
+<h1>Czy na pewno chcesz usunąć z bazy film {{ film.tytul }} ?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Usuń film</button>
+</form>
+
+<a href="/filmy/wszystkie/">Cofnij</a>
+
+</body>
+</html>

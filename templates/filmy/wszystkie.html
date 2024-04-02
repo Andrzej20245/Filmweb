@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wszystkie filmy</title>
+</head>
+<body>
+
+<a href="/filmy/nowy/" >Nowy film</a>
+
+{% if filmy %}
+    <ul>
+    {% for film in filmy %}
+        <li><a href="/filmy/szczegoly/{{ film.id }}/">{{ film.tytul }}</a></li>
+        <a href="/filmy/edytuj/{{ film.id }}/" >Edytuj film</a>
+        <a href="/filmy/usun/{{ film.id }}/" >Usuń film</a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Brak filmów w bazie danych.</p>
+{% endif %}
+</body>
+</html>

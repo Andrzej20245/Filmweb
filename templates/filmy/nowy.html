@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edycja filmu {{film.tytul}}</title>
+</head>
+<body>>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Wyślij dane</button>
+</form>
+
+<a href="/filmy/wszystkie/">Cofnij</a>
+
+</body>
+</html>

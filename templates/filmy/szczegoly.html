@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Szczegóły filmu {{film.tytul}}</title>
+</head>
+<body>
+<h1>{{ film.tytul }}</h1>
+<ul>
+    <li>Rok produkcji: {{ film.rok }}</li>
+    <li>Data premiery: {{ film.premiera }}</li>
+    <li>Punkty imdb: {{ film.imdb_pkts }}</li>
+    <li>Opis filmu: {{ film.opis }}</li>
+    <li>Czy film był wyświetlany w naszych kinach: {{ film.wyswietlany }}</li>
+    {% if film.extrainfo %}
+    <li>Dodatkowe informacje: {{ film.extrainfo }} </li>
+    {% endif %}
+    {% for ocena in film.ocena_set.all %}
+    <li>Recenzja: {{ ocena.recenzja }}, gwiazdki: {{ ocena.gwiazdki }}</li>
+    {% endfor %}
+    {% for aktor in film.aktor_set.all %}
+    <li>Aktor: {{ aktor.imie }} {{ aktor.nazwisko }}</li>
+    {% endfor %}
+
+</ul>
+
+<a href="/filmy/wszystkie/">Cofnij</a>
+
+</body>
+</html>
