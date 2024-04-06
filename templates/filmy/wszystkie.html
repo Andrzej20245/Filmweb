@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Wszystkie filmy</title>
-</head>
-<body>
+{% extends 'filmy/glowny.html' %}
 
-<a href="/filmy/nowy/" >Nowy film</a>
+{% block tytul %} Lista wszystkich filmów w bazie {% endblock %}
+
+{% block strona %}
+
+<a href="{% url 'nowy' %}">Nowy film</a>
 
 {% if filmy %}
     <ul>
     {% for film in filmy %}
-        <li><a href="/filmy/szczegoly/{{ film.id }}/">{{ film.tytul }}</a></li>
-        <a href="/filmy/edytuj/{{ film.id }}/" >Edytuj film</a>
-        <a href="/filmy/usun/{{ film.id }}/" >Usuń film</a>
+        <li><a href="{% url 'szczegoly' film.id %}">{{ film.tytul }}</a></li>
+        <a href="{% url 'edytuj' film.id %}">Edytuj film</a>
+        <a href="{% url 'usun' film.id %}">Usuń film</a>
     {% endfor %}
     </ul>
 {% else %}
     <p>Brak filmów w bazie danych.</p>
 {% endif %}
-</body>
-</html>
+
+{% endblock %}

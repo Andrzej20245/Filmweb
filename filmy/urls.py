@@ -16,9 +16,11 @@ Including another URLconf
 """
 
 
-from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
 from .views import wszystkie, szczegoly, nowy,edytuj,usun
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('wszystkie/',wszystkie, name='wszystkie'),
@@ -26,4 +28,4 @@ urlpatterns = [
     path('nowy/', nowy, name='nowy'),
     path('edytuj/<int:film_id>/', edytuj, name='edytuj'),
     path('usun/<int:film_id>/', usun, name='usun')
-]
+] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)

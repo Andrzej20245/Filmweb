@@ -1,9 +1,11 @@
+
 from django.http import HttpResponse
 
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Film
 from .forms import FilmForm
-
+from django.http import HttpResponseRedirect
+from django.contrib.auth import logout
 
 def wszystkie(request):
     filmy=Film.objects.all()
@@ -43,6 +45,8 @@ def usun(request, film_id):
         return redirect(wszystkie)
     return render(request, 'filmy/usun.html', {'film': film})
 
-
+def logout_view(request):
+  logout(request)
+  return HttpResponseRedirect(reverse('login'))
 
 

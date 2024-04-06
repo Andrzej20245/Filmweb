@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edycja filmu {{film.tytul}}</title>
-</head>
-<body>>
+{% extends 'filmy/glowny.html' %}
+
+{% block tytul %} Edycja i dodawanie filmów {% endblock %}
+
+{% block strona %}
 
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -12,7 +10,6 @@
     <button type="submit">Wyślij dane</button>
 </form>
 
-<a href="/filmy/wszystkie/">Cofnij</a>
+<a href="{% url 'wszystkie' %}">Cofnij</a>
 
-</body>
-</html>
+{% endblock %}

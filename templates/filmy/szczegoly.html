@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Szczegóły filmu {{film.tytul}}</title>
-</head>
-<body>
+{% extends 'filmy/glowny.html' %}
+
+{% block tytul %} Szczegółowy widok wskazanego filmu w bazie {% endblock %}
+
+{% block strona %}
+
 <h1>{{ film.tytul }}</h1>
 <ul>
+    <li>ID filmu: {{ film.id }}</li>
     <li>Rok produkcji: {{ film.rok }}</li>
     <li>Data premiery: {{ film.premiera }}</li>
     <li>Punkty imdb: {{ film.imdb_pkts }}</li>
     <li>Opis filmu: {{ film.opis }}</li>
-    <li>Czy film był wyświetlany w naszych kinach: {{ film.wyswietlany }}</li>
     {% if film.extrainfo %}
     <li>Dodatkowe informacje: {{ film.extrainfo }} </li>
     {% endif %}
@@ -24,7 +23,6 @@
 
 </ul>
 
-<a href="/filmy/wszystkie/">Cofnij</a>
+<a href="{% url 'wszystkie' %}">Cofnij</a>
 
-</body>
-</html>
+{% endblock %}
