@@ -2,9 +2,12 @@
 {% block tytul %} LOGIN {% endblock %}
 {% block strona %}
 
+{% load bootstrap %}
+
+
 <form method="post">
   {% csrf_token %}
-  {{ form }}
+  {{ form|bootstrap}}
   <button type="submit">Zaloguj</button>
 </form>
 

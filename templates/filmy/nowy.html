@@ -3,10 +3,11 @@
 {% block tytul %} Edycja i dodawanie filmów {% endblock %}
 
 {% block strona %}
+{% load bootstrap %}
 
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form }}
+    {{ form|bootstrap}}
     <button type="submit">Wyślij dane</button>
 </form>
 

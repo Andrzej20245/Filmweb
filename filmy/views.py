@@ -6,11 +6,14 @@ from .models import Film
 from .forms import FilmForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required, permission_required
 
 def wszystkie(request):
     filmy=Film.objects.all()
     context = {'filmy': filmy}
     return render(request, 'filmy/wszystkie.html', context)
+
+
 
 
 def szczegoly(request, film_id):
@@ -22,14 +25,16 @@ def szczegoly(request, film_id):
         elif f == "aktor":
             field_names[i] = "aktor_set"
     return render(request, 'filmy/szczegoly.html', {'film': film, 'field_names': field_names})
-
+@login_required
+@permission_required('filmy.add_film')
 def nowy(request):
     form = FilmForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect(wszystkie)
     return render(request, 'filmy/nowy.html', {'form': form})
-
+@login_required
+@permission_required('filmy.change_film')
 def edytuj(request, film_id):
     film = get_object_or_404(Film, pk=film_id)
     form = FilmForm(request.POST or None, instance=film)
@@ -37,7 +42,8 @@ def edytuj(request, film_id):
         form.save()
         return redirect(wszystkie)
     return render(request, 'filmy/nowy.html', {'form':form})
-
+@login_required
+@permission_required('filmy.delete_film')
 def usun(request, film_id):
     film = get_object_or_404(Film, pk=film_id)
     if request.method=="POST":
