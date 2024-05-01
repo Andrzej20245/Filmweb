@@ -1,0 +1,111 @@
+Sprawdzenie wersji pythona:
+python --version
+
+Sprawdzenie wersji django: 
+django-admin --version
+
+Tworzenie środowiska wirtualnego:
+python -m venv env
+
+Aktywacja środowiska wirtualnego:
+env\Scripts\activate
+
+Instalacja pakietu Django:
+pip install django
+
+Tworzenie projektu:
+django-admin startproject filmweb .
+
+Tworzenie aplikacji:
+django-admin startapp filmy
+
+
+Tworzenie superużytkownika:
+python manage.py createsuperuser --username admin --email admin@example.com
+
+Uruchomienie servera:
+python manage.py runserver
+
+Przygotowanie migracji:
+python manage.py makemigrations filmy
+
+Migracja:
+python manage.py migrate
+
+Polecenia ORM w konsoli Django:
+
+python manage.py shell
+
+Import modelu w konsoli:
+
+from filmy.models import Film
+
+Lista z bazy danych: 
+
+Film.objects.all()
+
+Wyjście:
+
+exit()
+
+Iteracja:
+
+for f in Film.objects.all():
+print([f.tytul,f.rok])
+
+Filtr: 
+
+Film.objects.filter(rok=1967)
+
+Film.objects.filter(rok__gte=1970)
+
+Film.objects.filter(tytul__contains='gna')
+
+Film.objects.filter(tytul__contains='nie') 
+
+Film.objects.filter(tytul__startswith='Sam')
+
+Film.objects.exclude(tytul__startswith='Sam') 
+
+Film.objects.get(id=5) 
+
+Film.objects.all().count()
+
+
+Dodanie elementu:
+
+f = Film(tytul='Samotność długodystansowca',rok=1962,premiera='1962-12-01',opis='',imdb_pkts=8.5)
+
+f.save() 
+
+Film.objects.all().count()
+
+Uruchomienie testów: 
+
+python manage.py test filmy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
