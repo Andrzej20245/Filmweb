@@ -1,6 +1,0 @@
-python manage.py makemigrations filmy
-python manage.py migrate
-
-python manage.py shell
-
-
