@@ -1,0 +1,19 @@
+{% extends 'filmy/glowny.html' %}
+
+{% block tytul %} Edycja i dodawanie filmów {% endblock %}
+
+{% block strona %}
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    {{ form_einfo }}
+    {{ form_ocena }}
+    {{ form_aktor }}
+    <button type="submit">Wyślij dane</button>
+</form>
+
+
+<a href="{% url 'wszystkie' %}">Cofnij</a>
+
+{% endblock %}

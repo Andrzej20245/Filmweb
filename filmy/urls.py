@@ -18,7 +18,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from .views import wszystkie, szczegoly, nowy,edytuj,usun
+from .views import wszystkie, szczegoly, nowy,edytuj,usun, nowy_nowy , nowy2
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -27,5 +27,7 @@ urlpatterns = [
     path('szczegoly/<int:film_id>/',szczegoly, name='szczegoly'),
     path('nowy/', nowy, name='nowy'),
     path('edytuj/<int:film_id>/', edytuj, name='edytuj'),
-    path('usun/<int:film_id>/', usun, name='usun')
+    path('usun/<int:film_id>/', usun, name='usun'),
+    path('nowy_nowy/', nowy_nowy, name='nowy_nowy'),
+    path('nowy2/', nowy2, name='nowy2'),
 ] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)
