@@ -1,3 +1,7 @@
+Instalacja bootstrapa:
+
+pip install django-bootstrap-form
+
 Sprawdzenie wersji pythona:
 python --version
 
@@ -83,29 +87,3 @@ Film.objects.all().count()
 Uruchomienie testów: 
 
 python manage.py test filmy
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
